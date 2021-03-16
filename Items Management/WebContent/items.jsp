@@ -1,5 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+
+<%
+if (request.getParameter("itemcode") != null)
+{
+	session.setAttribute("itemCome", request.getParameter("itemCome"));
+	session.setAttribute("itemName", request.getParameter("itemName"));
+	session.setAttribute("itemPrice", request.getParameter("itemPrice"));
+	session.setAttribute("itemDesc", request.getParameter("itemDesc"));
+	}
+%>    
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,7 +19,7 @@
 </head>
 <body>
 	<h1>Items Management</h1>
-	<form action="">
+	<form method="post" action="items.jsp">
 		Item code: <input name="itemCode" type="text"><br>
 		Item name: <input name="itemName" type="text"><br>
 		Item price: <input name="itemPrice" type="text"><br>
@@ -21,7 +32,10 @@
 			<th>Item Code</th><th>Item Name</th><th>Item Price</th><th>Item Description</th><th>Update</th><th>Remove</th>
 		</tr>
 		<tr>
-			<td>1234</td><td>Table</td><td>10,000/-</td><td>Mahogany</td>
+			<td><%out.println(session.getAttribute("itemCome")); %></td>
+			<td><%out.println(session.getAttribute("itemName")); %></td>
+			<td><%out.println(session.getAttribute("itemPrice")); %></td>
+			<td><%out.println(session.getAttribute("itemDesc")); %></td>
 			<td><input name="btnUpdate" type="button" value="Update"></td>
 			<td><input name="btnRemove" type="button" value="Remove"></td>
 		</tr>
