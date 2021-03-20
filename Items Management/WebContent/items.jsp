@@ -1,9 +1,12 @@
+<%@page import="com.Item"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 
 <%
 if (request.getParameter("itemcode") != null)
 {
+	Item itemObj = new Item();
+	itemObj.connect(); //For testing the connect method
 	session.setAttribute("itemCome", request.getParameter("itemCome"));
 	session.setAttribute("itemName", request.getParameter("itemName"));
 	session.setAttribute("itemPrice", request.getParameter("itemPrice"));
