@@ -3,6 +3,7 @@
     pageEncoding="ISO-8859-1"%>
 
 <%
+//Insert item----------------------------------
 if (request.getParameter("itemcode") != null)
 {
 	Item itemObj = new Item();
@@ -39,18 +40,25 @@ if (request.getParameter("itemcode") != null)
 		out.print(session.getAttribute("statusMsg"));
 	%>
 	<br>
-	<table border="1">
-		<tr>
-			<th>Item Code</th><th>Item Name</th><th>Item Price</th><th>Item Description</th><th>Update</th><th>Remove</th>
-		</tr>
-		<tr>
-			<td><%out.println(session.getAttribute("itemCome")); %></td>
-			<td><%out.println(session.getAttribute("itemName")); %></td>
-			<td><%out.println(session.getAttribute("itemPrice")); %></td>
-			<td><%out.println(session.getAttribute("itemDesc")); %></td>
-			<td><input name="btnUpdate" type="button" value="Update"></td>
-			<td><input name="btnRemove" type="button" value="Remove"></td>
-		</tr>
-	</table>
+	
+	<%
+	
+	Item itemObj = new Item();
+	out.print(itemObj.readItems());
+	
+	 //<table border="1">
+	//	<tr>
+	//		<th>Item Code</th><th>Item Name</th><th>Item Price</th><th>Item Description</th><th>Update</th><th>Remove</th>
+	//	</tr>
+	//	<tr>
+	//	<td> <% out.println(session.getAttribute("itemCome")); </td>
+	//		<td><%out.println(session.getAttribute("itemName")); </td>
+	//		<td><%out.println(session.getAttribute("itemPrice")); </td>
+	//		<td><%out.println(session.getAttribute("itemDesc")); </td>
+	//		<td><input name="btnUpdate" type="button" value="Update"></td>
+	//		<td><input name="btnRemove" type="button" value="Remove"></td>
+	//	</tr>
+	//</table>
+	%>
 </body>
 </html>
