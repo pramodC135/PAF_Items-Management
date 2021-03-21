@@ -6,11 +6,17 @@
 if (request.getParameter("itemcode") != null)
 {
 	Item itemObj = new Item();
-	itemObj.connect(); //For testing the connect method
-	session.setAttribute("itemCome", request.getParameter("itemCome"));
-	session.setAttribute("itemName", request.getParameter("itemName"));
-	session.setAttribute("itemPrice", request.getParameter("itemPrice"));
-	session.setAttribute("itemDesc", request.getParameter("itemDesc"));
+		String stsMsg = itemObj.insertItem(request.getParameter("itemCode"),
+				request.getParameter("itemName"),
+				request.getParameter("itemPrice"),
+				request.getParameter("itemDesc"));
+		
+	session.setAttribute("statusMsg", stsMsg);
+	//itemObj.connect(); //For testing the connect method
+	//session.setAttribute("itemCome", request.getParameter("itemCome"));
+	//session.setAttribute("itemName", request.getParameter("itemName"));
+	//session.setAttribute("itemPrice", request.getParameter("itemPrice"));
+	//session.setAttribute("itemDesc", request.getParameter("itemDesc"));
 	}
 %>    
 
@@ -29,6 +35,9 @@ if (request.getParameter("itemcode") != null)
 		Item Description: <input name="itemDesc" type="text"><br>
 		<input name="btnSubmit" type="submit" value="Save">
 	</form>
+	<%
+		out.print(session.getAttribute("statusMsg"));
+	%>
 	<br>
 	<table border="1">
 		<tr>
