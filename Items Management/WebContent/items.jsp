@@ -48,7 +48,7 @@ if (request.getParameter("itemcode") != null)
 	
 	 //<table border="1">
 	//	<tr>
-	//		<th>Item Code</th><th>Item Name</th><th>Item Price</th><th>Item Description</th><th>Update</th><th>Remove</th>
+	//		<th>Item Code</th><th>Item Name </th><th>Item Price</th><th>Item Description</th><th>Update</th><th>Remove</th>
 	//	</tr>
 	//	<tr>
 	//	<td> <% out.println(session.getAttribute("itemCome")); </td>
