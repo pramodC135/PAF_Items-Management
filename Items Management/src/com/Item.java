@@ -55,7 +55,7 @@ public class Item {
 			preparedStmt.execute();
 			con.close();
 			
-			output = "Insert Successfully";
+			output = "Inserted Successfully";
 		}
 		catch(Exception e)
 		{
@@ -80,9 +80,10 @@ public class Item {
 			}
 			
 			// Prepare the html table to be displayed
-			output = "<table border='1'>"
-				+ "<tr><th>Item Code</th><th>Item Name</th><th>Item Price</th>"
-				+ "<th>Item Description</th><th>Update</th><th>Remove</th></tr>";
+			output = "<table border='1'><tr><th>Item Code</th>"
+				+ "<th>Item Name</th><th>Item Price</th>"
+				+ "<th>Item Description</th>"
+				+ "<th>Update</th><th>Remove</th></tr>";
 			
 			String query = "select * from items";
 			Statement stmt = con.createStatement();
@@ -98,17 +99,19 @@ public class Item {
 				String itemDesc = rs.getString("itemDesc");
 				
 				// Add a row into the html table
-				output +="<tr><td>" + itemCode + "</td>";
-				output +="<td>" + itemName + "</td>";
-				output +="<td>" + itemPrice + "</td>";
-				output +="<td>" + itemDesc + "</td>";
+				output += "<tr><td>" + itemCode + "</td>";
+				output += "<td>" + itemName + "</td>";
+				output += "<td>" + itemPrice + "</td>";
+				output += "<td>" + itemDesc + "</td>";
 				
 				// Buttons
-				output += "<td><input name='btnUpdate' type='button' value='Update'></td>"
+				output += "<td><input name='btnUpdate' "
+						+ "type='button' value='Update'></td>"
 						+ "<td><form method='post' action='items.jsp'>"
-						+"input name=''btnRemove' type='submit' value='Remove'>"
-						+"input name='itemID' type= 'hidden' value='" + itemID +"'>"
-						+"</fotm></td></tr>";
+						+"input name=''btnRemove' "
+						+ "type='submit' value='Remove'>"
+						+"input name='itemID' type= 'hidden' "
+						+ "value='" + itemID +"'>" + "</form></td></tr>";
 			}
 			
 			con.close();
